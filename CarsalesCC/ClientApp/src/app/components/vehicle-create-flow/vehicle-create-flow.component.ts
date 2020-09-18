@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { VehicleType } from '../../enums/vehicle-type.enum'
 
 @Component({
   selector: 'app-vehicle-create-flow',
@@ -6,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicle-create-flow.component.css']
 })
 export class VehicleCreateFlowComponent implements OnInit {
+  vehicleTypeFromEnum= VehicleType;
+  @Input() vehicleType: string;
+  private formControl = new FormControl();
+  createForm: FormGroup;
+  public vehicelDetails = {
+    make: '',
+    model:'',
+    type: '',
+    
+    
+  };
+  constructor(protected formBuilder: FormBuilder) {
+    
+  }
 
-  constructor() { }
-
+  get f() { return this.createForm.controls; }
   ngOnInit() {
+    this.createForm = this.formBuilder.group({
+      make: [''],
+      type: [''],
+      model: [''],
+      
+    });
+    this.vehicelDetails.type = this.vehicleTypeFromEnum[ this.vehicleType];
   }
 
 }

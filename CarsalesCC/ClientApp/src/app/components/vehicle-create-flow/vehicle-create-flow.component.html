@@ -1,1 +1,15 @@
-<p>vehicle-create-flow works!</p>
+<h1>Create Vehicles</h1>
+
+<form [formGroup]="createForm">
+  <label style="color: black;">Vehicle Type*</label>
+  <input type="text" disabled formControlName="type" [(ngModel)]="vehicelDetails.type" class="form-control" value="Car" />
+  <label style="color: black;">Make*</label>
+  <input type="text" formControlName="make" [(ngModel)]="vehicelDetails.make" class="form-control" />
+  <label style="color: black;">Model*</label>
+  <input type="text" formControlName="model" [(ngModel)]="vehicelDetails.model" class="form-control" />
+ 
+  <ng-container [ngSwitch]="vehicleType">
+    <cars [parentForm]="createForm" *ngSwitchCase="vehicleTypeFromEnum.Cars"></cars>
+    <bikes [parentForm]="createForm" *ngSwitchCase="vehicleTypeFromEnum.Bikes"></bikes>
+  </ng-container>
+</form>

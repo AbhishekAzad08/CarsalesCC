@@ -1,40 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { VehicleCreateFlowComponent } from './components/vehicle-create-flow/vehicle-create-flow.component';
 import { CarsComponent } from './components/cars/cars.component';
+import { VehicleDirective } from './directives/vehicle.directive';
+import { BikesComponent } from './components/bikes/bikes.component';
+import { BaseService } from './services/base.service';
+import { VehicleCreationService } from './services/vehicle-creation.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     VehicleComponent,
     VehicleCreateFlowComponent,
-    CarsComponent
+    CarsComponent,
+    VehicleDirective,
+    BikesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'create', component: VehicleCreateFlowComponent },
-      //{ path: 'fetch-data', component: FetchDataComponent },
+      { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [BaseService, VehicleCreationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,14 @@
-<p>cars works!</p>
+<form [formGroup]="carFormGroup">
+  <label style="color: black;">No of doors*</label>
+  <input type="text" formControlName="doors" [(ngModel)]="vehicelDetails.doors" class="form-control" />
+  <label style="color: black;">Engine*</label>
+  <input type="text" formControlName="engine" [(ngModel)]="vehicelDetails.engine" class="form-control" />
+  <label style="color: black;">Wheels*</label>
+  <input type="text" formControlName="wheels" [(ngModel)]="vehicelDetails.wheels" class="form-control" />
+  <label style="color: black;">BodyType*</label>
+  <input type="text" formControlName="bodytype" [(ngModel)]="vehicelDetails.bodytype" class="form-control" />
+  <button type="button" class="btn btn-primary" style="margin-top:10px;" id="modal-action-button" (click)="actionFunction()">
+    Create
+  </button>
+
+</form>
