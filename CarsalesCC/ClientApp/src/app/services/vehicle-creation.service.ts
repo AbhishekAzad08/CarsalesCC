@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { CarCreateRequest } from '../models/request/car.create.request';
 
 
 @Injectable({
@@ -12,23 +13,16 @@ import { BehaviorSubject } from 'rxjs';
 export class VehicleCreationService extends BaseService {
 
   baseUrl = environment.baseUrl;
-  createVehicleObj: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public forecasts: WeatherForecast[];
+
 
   constructor(httpClient: HttpClient) {
     super(httpClient);
   }
 
-  createVehicle(data:any) {
-    this.httpClient.get<WeatherForecast[]>(this.baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+  createCar(data: CarCreateRequest) {
+
+    return this.httpClient.post(`${this.baseUrl}cars/create`, data);
+  
   }
 
-}
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
 }

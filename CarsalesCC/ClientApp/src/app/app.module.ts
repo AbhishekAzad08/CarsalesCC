@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { ModalModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +15,7 @@ import { VehicleDirective } from './directives/vehicle.directive';
 import { BikesComponent } from './components/bikes/bikes.component';
 import { BaseService } from './services/base.service';
 import { VehicleCreationService } from './services/vehicle-creation.service';
+import { CreateSuccessComponent } from './modals/create-success/create-success.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,13 @@ import { VehicleCreationService } from './services/vehicle-creation.service';
     VehicleCreateFlowComponent,
     CarsComponent,
     VehicleDirective,
-    BikesComponent
+    BikesComponent,
+    CreateSuccessComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    ModalModule.forRoot(),
     FormsModule, ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -39,6 +42,7 @@ import { VehicleCreationService } from './services/vehicle-creation.service';
     ])
   ],
   providers: [BaseService, VehicleCreationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateSuccessComponent]
 })
 export class AppModule { }

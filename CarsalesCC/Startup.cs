@@ -1,7 +1,12 @@
+using AutoMapper;
+using CarsalesCC.Data;
+using CarsalesCC.IOC;
+using CarsalesCC.RequestDTOs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,7 +25,25 @@ namespace CarsalesCC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("CarsalesCC_DB"));
+            services.AddScoped<AppDbContext>();
+
+            services.AddControllers().AddNewtonsoftJson();
             services.AddControllersWithViews();
+
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new DtoMapper());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            //Repositories
+            services.RegisterRepositories();
+            //services
+            services.RegisterService();
+
+            services.AddAutoMapper(typeof(Startup), typeof(DtoMapper));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

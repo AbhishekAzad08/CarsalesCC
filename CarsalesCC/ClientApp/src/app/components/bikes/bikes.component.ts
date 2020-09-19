@@ -15,12 +15,7 @@ export class BikesComponent implements OnInit {
   actionFunction() {
     var formgrp = this.bikeFormGroup;
     var answers = formgrp['value'];
-    var typeAnswer = answers['name'];
-    var makeAnswer = answers['name'];
-    var modelAnswer = answers['name'];
-
-
-    this.vehicalService.createVehicleObj.next(true);
+    
   }
   ngOnInit() {
     this.bikeFormGroup = this.parentForm;

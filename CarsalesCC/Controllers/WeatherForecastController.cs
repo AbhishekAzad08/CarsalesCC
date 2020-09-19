@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarsalesCC.Data;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -35,5 +38,16 @@ namespace CarsalesCC.Controllers
             })
             .ToArray();
         }
+
+        //[HttpPost]
+        //[Route("create")]
+        //[ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        //[ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        //public IEnumerable<string> CreateCar(CarsalesCC.Data.Car vcr)
+        //{
+        //    return new List<string>();
+        //}
     }
 }

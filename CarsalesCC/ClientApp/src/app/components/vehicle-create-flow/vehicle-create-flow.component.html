@@ -1,15 +1,35 @@
-<h1>Create Vehicles</h1>
+
 
 <form [formGroup]="createForm">
   <label style="color: black;">Vehicle Type*</label>
-  <input type="text" disabled formControlName="type" [(ngModel)]="vehicelDetails.type" class="form-control" value="Car" />
+  <input type="text" formControlName="vehicletype" [(ngModel)]="vehicelDetails.vehicletype" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.vehicletype.errors }"/>
+  <div *ngIf="submitted &&( f.vehicletype.errors || f.vehicletype.dirty || f.vehicletype.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.vehicletype">
+      <div *ngIf="f.vehicletype.hasError(validation.type) ">{{validation.message}}</div>
+      <!--<div *ngIf="f.make.hasError(validation.type) && (f.make.dirty || f.make.touched)">{{validation.message}}</div>-->
+    </div>
+  </div>
+
   <label style="color: black;">Make*</label>
-  <input type="text" formControlName="make" [(ngModel)]="vehicelDetails.make" class="form-control" />
+  <input type="text" required formControlName="make" [(ngModel)]="vehicelDetails.make" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.make.errors }" />
+  <div *ngIf="submitted &&( f.make.errors || f.make.dirty || f.make.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.make">
+      <div *ngIf="f.make.hasError(validation.type) ">{{validation.message}}</div>
+      <!--<div *ngIf="f.make.hasError(validation.type) && (f.make.dirty || f.make.touched)">{{validation.message}}</div>-->
+    </div>
+  </div>
+
   <label style="color: black;">Model*</label>
-  <input type="text" formControlName="model" [(ngModel)]="vehicelDetails.model" class="form-control" />
- 
+  <input type="text" formControlName="model" [(ngModel)]="vehicelDetails.model" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.model.errors }" />
+  <div *ngIf="submitted && f.model.errors" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.model">
+      <div *ngIf="f.model.hasError(validation.type) ">{{validation.message}}</div>
+    </div>
+  </div>
+
   <ng-container [ngSwitch]="vehicleType">
-    <cars [parentForm]="createForm" *ngSwitchCase="vehicleTypeFromEnum.Cars"></cars>
+    <cars [parentForm]="createForm" *ngSwitchCase="vehicleTypeFromEnum.Cars" (toParent)="actionFunction($event)"></cars>
     <bikes [parentForm]="createForm" *ngSwitchCase="vehicleTypeFromEnum.Bikes"></bikes>
   </ng-container>
+
 </form>

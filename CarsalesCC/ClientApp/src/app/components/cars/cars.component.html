@@ -1,12 +1,37 @@
 <form [formGroup]="carFormGroup">
+
   <label style="color: black;">No of doors*</label>
-  <input type="text" formControlName="doors" [(ngModel)]="vehicelDetails.doors" class="form-control" />
+  <input type="text" required formControlName="doors" [(ngModel)]="vehicelDetails.doors" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.doors.errors }" />
+  <div *ngIf="submitted  &&( f.doors.errors || f.doors.dirty || f.doors.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.doors">
+      <div *ngIf="f.doors.hasError(validation.type) ">{{validation.message}}</div>
+    </div>
+  </div>
+
   <label style="color: black;">Engine*</label>
-  <input type="text" formControlName="engine" [(ngModel)]="vehicelDetails.engine" class="form-control" />
+  <input type="text" formControlName="engine" [(ngModel)]="vehicelDetails.engine" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.engine.errors }" />
+  <div *ngIf="submitted &&( f.engine.errors || f.engine.dirty || f.engine.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.engine">
+      <div *ngIf="f.engine.hasError(validation.type) ">{{validation.message}}</div>
+    </div>
+  </div>
+
   <label style="color: black;">Wheels*</label>
-  <input type="text" formControlName="wheels" [(ngModel)]="vehicelDetails.wheels" class="form-control" />
+  <input type="text" formControlName="wheels" [(ngModel)]="vehicelDetails.wheels" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.wheels.errors }" />
+  <div *ngIf="submitted &&( f.wheels.errors || f.wheels.dirty || f.wheels.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.wheels">
+      <div *ngIf="f.wheels.hasError(validation.type) ">{{validation.message}}</div>
+    </div>
+  </div>
+
   <label style="color: black;">BodyType*</label>
-  <input type="text" formControlName="bodytype" [(ngModel)]="vehicelDetails.bodytype" class="form-control" />
+  <input type="text" formControlName="bodytype" [(ngModel)]="vehicelDetails.bodytype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bodytype.errors }" />
+  <div *ngIf="submitted &&( f.bodytype.errors || f.bodytype.dirty || f.bodytype.touched)" class="invalid-feedback">
+    <div *ngFor="let validation of validation_messages.bodytype">
+      <div *ngIf="f.bodytype.hasError(validation.type) ">{{validation.message}}</div>
+    </div>
+  </div>
+
   <button type="button" class="btn btn-primary" style="margin-top:10px;" id="modal-action-button" (click)="actionFunction()">
     Create
   </button>
