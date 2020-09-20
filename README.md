@@ -8,7 +8,7 @@ will take you to a page where you can create new vehicles (car for now) which
 are saved to a data store.
 
 # Frontend
-Angular has been used for frontend. 
+Angular has been used for frontend. Have used ng-template to populate the vehicles forms based on the option selected. 
 
 # Styling
 Bootstrap has been used.
