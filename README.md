@@ -26,5 +26,5 @@ Unit testing has been added for controller methods.
 
 [Home Screen](https://github.com/AbhishekAzad08/CarsalesCC/blob/master/CarsalesCC/ClientApp/src/assets/images/home.PNG)
 [Create Car Screen](https://github.com/AbhishekAzad08/CarsalesCC/blob/master/CarsalesCC/ClientApp/src/assets/images/CreateCar.PNG)
-[Success Screen](https://github.com/AbhishekAzad08/CarsalesCC/blob/master/CarsalesCC/ClientApp/src/assets/images/Success.PNG)
+[Success Screen](https://github.com/AbhishekAzad08/CarsalesCC/blob/master/CarsalesCC/ClientApp/src/assets/images/Succes.PNG)
 [Validations Screen](https://github.com/AbhishekAzad08/CarsalesCC/blob/master/CarsalesCC/ClientApp/src/assets/images/Validations.PNG)
