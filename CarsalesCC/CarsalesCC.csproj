@@ -43,6 +43,7 @@
     <Folder Include="ClientApp\src\app\directives\" />
     <Folder Include="ClientApp\src\app\modals\" />
     <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\assets\images\" />
   </ItemGroup>
 
   <ItemGroup>
