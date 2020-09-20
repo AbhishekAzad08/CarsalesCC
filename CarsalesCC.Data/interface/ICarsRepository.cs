@@ -6,6 +6,7 @@ namespace CarsalesCC.Data
 {
     public interface ICarsRepository
     {
-        string Create(CarEntity car);
+        CarEntity Create(CarEntity car);
+        List<CarEntity> GetAll();
     }
 }

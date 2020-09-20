@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\models\request\car.create.request.ts" />
+    <None Remove="ClientApp\src\app\models\response\car.create.response.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +52,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\models\request\car.create.request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\response\car.create.response.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

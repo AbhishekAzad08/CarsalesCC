@@ -11,18 +11,24 @@ namespace CarsalesCC.Data
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(25)]
         public string Make { get; set; }
         [Required]
+        [MaxLength(25)]
         public string Model { get; set; }
         [Required]
         public string VehicleType { get; set; }
         [Required]
+        [MaxLength(25)]
         public string Engine { get; set; }
         [Required]
-        public string Doors { get; set; }
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Only numbers")]
+        public int Doors { get; set; }
         [Required]
-        public string Wheels { get; set; }
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Only numbers")]
+        public int Wheels { get; set; }
         [Required]
+        [MaxLength(25)]
         public string BodyType { get; set; }
     }
 }

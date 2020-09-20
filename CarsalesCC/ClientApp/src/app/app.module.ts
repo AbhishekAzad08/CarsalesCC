@@ -7,7 +7,6 @@ import { ModalModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { VehicleCreateFlowComponent } from './components/vehicle-create-flow/vehicle-create-flow.component';
 import { CarsComponent } from './components/cars/cars.component';
@@ -22,7 +21,6 @@ import { CreateSuccessComponent } from './modals/create-success/create-success.c
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
     VehicleComponent,
     VehicleCreateFlowComponent,
     CarsComponent,
@@ -38,7 +36,6 @@ import { CreateSuccessComponent } from './modals/create-success/create-success.c
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'create', component: VehicleCreateFlowComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
   providers: [BaseService, VehicleCreationService],

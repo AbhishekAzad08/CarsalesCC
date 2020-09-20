@@ -6,7 +6,6 @@
   <div *ngIf="submitted &&( f.vehicletype.errors || f.vehicletype.dirty || f.vehicletype.touched)" class="invalid-feedback">
     <div *ngFor="let validation of validation_messages.vehicletype">
       <div *ngIf="f.vehicletype.hasError(validation.type) ">{{validation.message}}</div>
-      <!--<div *ngIf="f.make.hasError(validation.type) && (f.make.dirty || f.make.touched)">{{validation.message}}</div>-->
     </div>
   </div>
 
@@ -15,7 +14,6 @@
   <div *ngIf="submitted &&( f.make.errors || f.make.dirty || f.make.touched)" class="invalid-feedback">
     <div *ngFor="let validation of validation_messages.make">
       <div *ngIf="f.make.hasError(validation.type) ">{{validation.message}}</div>
-      <!--<div *ngIf="f.make.hasError(validation.type) && (f.make.dirty || f.make.touched)">{{validation.message}}</div>-->
     </div>
   </div>
 

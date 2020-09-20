@@ -16,11 +16,19 @@ namespace CarsalesCC.Services
             _carsRepository = carsRepository;
             _mapper = mapper;
         }
-        public Task<string> Create(CarCreateRequestDto carDto)
+        public Task<CarCreateResponseDto> Create(CarCreateRequestDto carDto)
         {
             var car=_mapper.Map<CarCreateRequestDto, CarEntity>(carDto);
+            var result = _carsRepository.Create(car);
+            
+           return Task.FromResult(_mapper.Map <CarEntity,CarCreateResponseDto >(result ));
+        }
 
-           return Task.FromResult( _carsRepository.Create(car));
+        public List<CarGetResponseDto> GetAll()
+        {
+            var result = _carsRepository.GetAll();
+            return _mapper.Map< List<CarEntity>, List<CarGetResponseDto>>(result);
+           
         }
     }
 }

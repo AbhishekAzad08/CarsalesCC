@@ -23,38 +23,33 @@ namespace CarsalesCC.Controllers
         }
         // GET: api/<CarsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<CarGetResponseDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _carService.GetAll();
         }
 
-        // GET api/<CarsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+
         [HttpPost]
         [Route("create")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
-        public Task<string> CreateCar(CarCreateRequestDto request )
+        public Task<CarCreateResponseDto> CreateCar(CarCreateRequestDto request )
         {
             return _carService.Create(request);
         }
 
         // PUT api/<CarsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<CarsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<CarsController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

@@ -59,7 +59,7 @@ export class CarsComponent implements OnInit {
         keyboard: true,
         backdrop: true,
         ignoreBackdropClick: true,
-        initialState: { carId: result.toString() },
+        initialState: { carId: result.id.toString() },
       });
       this.toParent.emit(true);
       this.parentForm.markAsUntouched();

@@ -5,6 +5,7 @@ import { BaseService } from './base.service';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { CarCreateRequest } from '../models/request/car.create.request';
+import { CarCreateResponse } from '../models/response/car.create.response';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class VehicleCreationService extends BaseService {
 
   createCar(data: CarCreateRequest) {
 
-    return this.httpClient.post(`${this.baseUrl}cars/create`, data);
+    return this.httpClient.post<CarCreateResponse>(`${this.baseUrl}cars/create`, data);
   
   }
 
