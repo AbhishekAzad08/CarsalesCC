@@ -61,7 +61,8 @@ export class CarsComponent implements OnInit {
         ignoreBackdropClick: true,
         initialState: { carId: result.id.toString() },
       });
-      this.toParent.emit(true);
+      this.submitted = false;
+      this.toParent.emit(false);
       this.parentForm.markAsUntouched();
       this.parentForm.markAsPristine();
       this.parentForm.reset();
